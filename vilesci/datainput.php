@@ -23,6 +23,7 @@ require_once('../../../config/vilesci.config.inc.php');
 require_once('../../../include/functions.inc.php');
 require_once('../../../include/benutzerberechtigung.class.php');
 require_once ('../include/idCard.class.php');
+$uid = get_uid();
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
     "http://www.w3.org/TR/html4/strict.dtd">
@@ -317,11 +318,10 @@ require_once ('../include/idCard.class.php');
 <body>
 <h1><?php echo $addon_name?> - Dateneingabe</h1>
 <?php
-$uid = get_uid();
+
 $rechte = new benutzerberechtigung();
 $rechte->getBerechtigungen($uid);
 
-//TODO neues Recht anlegen?
 if(!$rechte->isBerechtigt('addon/externeAusweise'))
 {
     die('Sie haben keine Berechtigung fuer diese Seite');
